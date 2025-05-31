@@ -1,0 +1,40 @@
+#!/bin/bash
+set -e
+
+cd ~
+# 1.Instalar obsutil (si no lo incluyes en el repo)
+# Puedes descargar el obsutil más reciente desde GitHub o desde el mirror de Huawei.
+# Ejemplo usando wget (ajusta la URL a la versión válida)
+
+wget https://obs-community-intl.obs.ap-southeast-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz
+VERSION_DIR="$(tar -tzf obsutil_linux_amd64.tar.gz | head -1 | cut -f1 -d'/')"
+tar -xzf obsutil_linux_amd64.tar.gz
+cd $VERSION_DIR
+chmod 755 obsutil
+
+
+# 2. Configurar obsutil con las credenciales del entorno (Secretos que creamos)
+# OBS_AK y OBS_SK vienen inyectados automáticamente en variables de entorno
+# OBS_ENDPOINT y OBS_BUCKET también (si los creaste)
+
+./obsutil config -i="$OBS_AK" -k="$OBS_SK" -e="$OBS_ENDPOINT"
+
+# 3. Limpiar el bucket (opcionalmente, para evitar archivos obsoletos)
+# Esto borrará TODO el contenido del bucket antes de subir el sitio nuevo.
+# Úsalo con cuidado. Si prefieres, solo sube sobreescribiendo (sin borrar).
+
+# ./obsutil ls obs://$OBS_BUCKET/ --boundary="/"
+# ./obsutil rm obs://$OBS_BUCKET/ --recursive
+
+# 4. Subir toda la carpeta estática al bucket
+# Asumiendo que tu pipeline clonó el repo en la ruta $CODEARTS_SRC_PATH,
+# y que tu sitio está en la raíz (index.html, css/, img/, etc.)
+# Si tu repo tiene una carpeta "dist" o “build”, pon esa ruta en su lugar.
+
+REPO_ROOT="$CODEARTS_SRC_PATH"   # Variable que apunta al código fuente clonado
+cd "$REPO_ROOT"
+
+# Ejemplo: subir **todo** el contenido actual de la carpeta al bucket raíz:
+~/"$VERSION_DIR"/obsutil cp ./ obs://$OBS_BUCKET/ -r -f -flat
+
+echo "✔ Sitio subido correctamente a OBS://$OBS_BUCKET/"
