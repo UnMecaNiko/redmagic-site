@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Magic | Protecna - Máquina Láser Profesional</title>
+    <meta name="description" content="Red Magic de Protecna - Máquina láser profesional para grabado y corte. Tecnología FAC, 80W de potencia, ideal para empresas y artistas.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #D72323;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "⚡";
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #F5EDED;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            color: #D72323;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #000000 0%, #3E3636 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #F5EDED;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(215,35,35,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            background: #3E3636;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #D72323;
+            color: #F5EDED;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 2rem;
+            z-index: 2;
+            position: relative;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            padding: 0 2rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #D72323, #F5EDED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #F5EDED;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-feature {
+            background: rgba(62, 54, 54, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(215, 35, 35, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .hero-feature:hover {
+            transform: translateY(-5px);
+            background: rgba(62, 54, 54, 0.5);
+        }
+
+        .hero-feature h3 {
+            color: #D72323;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .cta-section {
+            margin-top: 3rem;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #D72323, #F5EDED);
+            color: #000000;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(215, 35, 35, 0.4);
+        }
+
+        /* Product Showcase */
+        .product-showcase {
+            padding: 6rem 0;
+            background: #F5EDED;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #000000;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #3E3636;
+            border: 2px dashed #D72323;
+            color: #F5EDED;
+            font-size: 1rem;
+            text-align: center;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(215, 35, 35, 0.8);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: #D72323;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-prev {
+            left: 10px;
+        }
+
+        .carousel-next {
+            right: 10px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(215, 35, 35, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: #D72323;
+            transform: scale(1.2);
+        }
+
+        .product-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        .product-info p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #3E3636;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1rem;
+            color: #3E3636;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: #D72323;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Applications Section */
+        .applications {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #000000, #3E3636);
+            color: #F5EDED;
+        }
+
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .application-card {
+            background: rgba(62, 54, 54, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(215, 35, 35, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .application-card:hover {
+            transform: translateY(-5px);
+            background: rgba(62, 54, 54, 0.5);
+            border-color: #D72323;
+        }
+
+        .application-card h3 {
+            color: #D72323;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .application-card ul {
+            list-style: none;
+        }
+
+        .application-card li {
+            padding: 0.3rem 0;
+            color: #F5EDED;
+        }
+
+        .application-card li::before {
+            content: "•";
+            color: #D72323;
+            margin-right: 0.5rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 6rem 0;
+            background: #F5EDED;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #D72323;
+            color: #3E3636;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(215, 35, 35, 0.2);
+        }
+
+        /* Specifications */
+        .specs {
+            padding: 6rem 0;
+            background: #fff;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .spec-card {
+            background: #F5EDED;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #D72323;
+            transition: all 0.3s ease;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .spec-card h3 {
+            color: #000000;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .spec-list {
+            list-style: none;
+        }
+
+        .spec-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(215, 35, 35, 0.2);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .spec-list li:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: bold;
+            color: #3E3636;
+        }
+
+        .spec-value {
+            color: #000000;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000000;
+            color: #F5EDED;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #D72323;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #F5EDED;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #F5EDED;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .footer-section a:hover {
+            color: #D72323;
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(245, 237, 237, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(245, 237, 237, 0.6);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(215, 35, 35, 0.2);
+            z-index: 9999;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #D72323, #F5EDED);
+            width: 0%;
+            transition: width 0.1s ease;
+        }}
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-features {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-primary {
+                display: block;
+                margin: 1rem 0;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 51, 102, 0.2);
+            z-index: 9999;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #ff3366, #ff6b9d);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">PROTECNA</a>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#producto">Producto</a></li>
+                <li><a href="#aplicaciones">Aplicaciones</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#especificaciones">Especificaciones</a></li>
+            </ul>
+            <a href="https://wa.me/+57XXXXXXXXX?text=Hola,%20estoy%20interesado%20en%20la%20máquina%20Red%20Magic" 
+               class="whatsapp-btn" target="_blank">
+                📱 WhatsApp
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>RED MAGIC</h1>
+            <p class="subtitle">Máquina Láser Profesional de Alta Precisión</p>
+            
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <h3>80W de Potencia</h3>
+                    <p>10W de salida óptica con tecnología FAC</p>
+                </div>
+                <div class="hero-feature">
+                    <h3>Área de Trabajo</h3>
+                    <p>400mm x 400mm de precisión</p>
+                </div>
+                <div class="hero-feature">
+                    <h3>Múltiples Materiales</h3>
+                    <p>Graba y corta más de 12 tipos de materiales</p>
+                </div>
+                <div class="hero-feature">
+                    <h3>Diseño Compacto</h3>
+                    <p>Profesional y fácil de usar</p>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <a href="#producto" class="cta-primary">Conocer Más</a>
+                <a href="https://wa.me/+57XXXXXXXXX?text=Hola,%20quiero%20información%20sobre%20Red%20Magic" 
+                   class="whatsapp-btn" target="_blank">
+                    📱 Contactar Ahora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="product-showcase" id="producto">
+        <div class="container">
+            <h2 class="section-title">Conoce Red Magic</h2>
+            
+            <div class="product-grid">
+                <div class="product-image">
+                    <div>
+                        <strong>Imagen Principal del Producto</strong><br>
+                        Sugerencia: Foto frontal de la máquina Red Magic con buena iluminación, 
+                        mostrando la cúpula de acrílico rojo y el diseño compacto. 
+                        Fondo limpio y profesional.
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h2>Tecnología de Vanguardia</h2>
+                    <p>Red Magic incorpora tecnología de compresión FAC que permite grabado y corte rápido y preciso en una amplia variedad de materiales, desde papel hasta acero inoxidable.</p>
+                    
+                    <ul class="features-list">
+                        <li>Láser de 80W con 10W de salida óptica</li>
+                        <li>Sistema de aire asistido integrado</li>
+                        <li>Cúpula de protección ocular en acrílico rojo</li>
+                        <li>Ventilación y extracción de humo</li>
+                        <li>Motores paso a paso de alta precisión</li>
+                        <li>Compatible con GRBL y LightBurn</li>
+                        <li>Conexión USB directa</li>
+                        <li>Iluminación LED interna</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-info">
+                    <h2>Diseño Mecánico Superior</h2>
+                    <p>Construida con materiales de alta calidad: acero 1045, aluminio extruido y componentes de precisión que garantizan durabilidad y exactitud en cada proyecto.</p>
+                    
+                    <ul class="features-list">
+                        <li>Ejes X-Y con tornillo helicoidal</li>
+                        <li>Bujes lineales de alta precisión</li>
+                        <li>Parrilla de corte tipo panal de abeja</li>
+                        <li>Sistema de protección contra sobrecarga</li>
+                        <li>Paro de emergencia integrado</li>
+                        <li>Ventilación asistida en zona electrónica</li>
+                    </ul>
+                </div>
+                <div class="product-image">
+                    <div>
+                        <strong>Imagen del Sistema Mecánico</strong><br>
+                        Sugerencia: Foto detalle de los ejes X-Y, mostrando los tornillos helicoidales 
+                        y bujes lineales. También incluir la parrilla panal de abeja.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications -->
+    <section class="applications" id="aplicaciones">
+        <div class="container">
+            <h2 class="section-title">Aplicaciones Profesionales</h2>
+            
+            <div class="applications-grid">
+                <div class="application-card">
+                    <h3>🪵 Carpinterías y Marqueterías</h3>
+                    <ul>
+                        <li>Grabado personalizado en madera</li>
+                        <li>Corte de patrones complejos</li>
+                        <li>Señalización personalizada</li>
+                        <li>Acabados decorativos</li>
+                    </ul>
+                </div>
+
+                <div class="application-card">
+                    <h3>🎨 Estudios de Arte y Diseño</h3>
+                    <ul>
+                        <li>Proyectos artísticos únicos</li>
+                        <li>Prototipos y maquetas</li>
+                        <li>Grabado en múltiples materiales</li>
+                        <li>Piezas decorativas personalizadas</li>
+                    </ul>
+                </div>
+
+                <div class="application-card">
+                    <h3>🏪 Tiendas de Souvenirs y Regalos</h3>
+                    <ul>
+                        <li>Llaveros personalizados</li>
+                        <li>Placas conmemorativas</li>
+                        <li>Grabado en acrílico y madera</li>
+                        <li>Productos únicos y personalizados</li>
+                    </ul>
+                </div>
+
+                <div class="application-card">
+                    <h3>📱 Accesorios y Tecnología</h3>
+                    <ul>
+                        <li>Fundas personalizadas</li>
+                        <li>Grabado en metal y acrílico</li>
+                        <li>Componentes electrónicos</li>
+                        <li>Soportes y bases</li>
+                    </ul>
+                </div>
+
+                <div class="application-card">
+                    <h3>🏢 Fabricación de Avisos</h3>
+                    <ul>
+                        <li>Señalización comercial</li>
+                        <li>Letreros en acrílico</li>
+                        <li>Placas identificativas</li>
+                        <li>Rotulación profesional</li>
+                    </ul>
+                </div>
+
+                <div class="application-card">
+                    <h3>🎯 Juguetes y Didácticos</h3>
+                    <ul>
+                        <li>Rompecabezas personalizados</li>
+                        <li>Juegos educativos</li>
+                        <li>Piezas de madera y acrílico</li>
+                        <li>Juguetes únicos y seguros</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <h2 class="section-title">Galería de Proyectos</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div>
+                        <strong>Video de la Máquina en Funcionamiento</strong><br>
+                        Sugerencia: Video corto mostrando Red Magic cortando o grabando. 
+                        Enfocar en la precisión del láser y la calidad del acabado.
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div>
+                        <strong>Trabajos en Madera</strong><br>
+                        Fotos de proyectos realizados: grabados detallados, 
+                        cortes precisos, acabados profesionales.
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div>
+                        <strong>Proyectos en Acrílico</strong><br>
+                        Piezas cortadas y grabadas en acrílico: 
+                        llaveros, placas, elementos decorativos.
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div>
+                        <strong>Trabajos en Metal</strong><br>
+                        Grabados en aluminio anodizado y acero inoxidable. 
+                        Mostrar la precisión en materiales duros.
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div>
+                        <strong>Proceso de Trabajo</strong><br>
+                        Fotos del proceso: configuración del material, 
+                        posicionamiento, resultado final.
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div>
+                        <strong>Detalles de Precisión</strong><br>
+                        Fotos macro mostrando la calidad del corte 
+                        y grabado en diferentes materiales.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specifications -->
+    <section class="specs" id="especificaciones">
+        <div class="container">
+            <h2 class="section-title">Especificaciones Técnicas</h2>
+            
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h3>Dimensiones y Peso</h3>
+                    <ul class="spec-list">
+                        <li><span class="spec-label">Altura:</span> <span class="spec-value">44 cm</span></li>
+                        <li><span class="spec-label">Ancho:</span> <span class="spec-value">69 cm</span></li>
+                        <li><span class="spec-label">Largo:</span> <span class="spec-value">75 cm</span></li>
+                        <li><span class="spec-label">Peso:</span> <span class="spec-value">25 kg</span></li>
+                        <li><span class="spec-label">Área de trabajo:</span> <span class="spec-value">400 x 400 mm</span></li>
+                    </ul>
+                </div>
+
+                <div class="spec-card">
+                    <h3>Sistema Láser</h3>
+                    <ul class="spec-list">
+                        <li><span class="spec-label">Potencia:</span> <span class="spec-value">80W</span></li>
+                        <li><span class="spec-label">Salida óptica:</span> <span class="spec-value">10W</span></li>
+                        <li><span class="spec-label">Tecnología:</span> <span class="spec-value">Compresión FAC</span></li>
+                        <li><span class="spec-label">Protección:</span> <span class="spec-value">Cúpula acrílico rojo 5mm</span></li>
+                    </ul>
+                </div>
+
+                <div class="spec-card">
+                    <h3>Materiales Estructurales</h3>
+                    <ul class="spec-list">
+                        <li><span class="spec-label">Estructura:</span> <span class="spec-value">Acero 1045</span></li>
+                        <li><span class="spec-label">Perfiles:</span> <span class="spec-value">Aluminio extruido</span></li>
+                        <li><span class="spec-label">Lámina:</span> <span class="spec-value">Acero calibre 18</span></li>
+                        <li><span class="spec-label">Protección:</span> <span class="spec-value">Acrílico translúcido rojo</span></li>
+                    </ul>
+                </div>
+
+                <div class="spec-card">
+                    <h3>Sistema de Control</h3>
+                    <ul class="spec-list">
+                        <li><span class="spec-label">Firmware:</span> <span class="spec-value">GRBL compatible</span></li>
+                        <li><span class="spec-label">Software:</span> <span class="spec-value">LightBurn compatible</span></li>
+                        <li><span class="spec-label">Conexión:</span> <span class="spec-value">USB directo</span></li>
+                        <li><span class="spec-label">Motores:</span> <span class="spec-value">Paso a paso</span></li>
+                    </ul>
+                </div>
+
+                <div class="spec-card">
+                    <h3>Sistemas de Seguridad</h3>
+                    <ul class="spec-list">
+                        <li><span class="spec-label">Protección ocular:</span> <span class="spec-value">Cúpula acrílico rojo</span></li>
+                        <li><span class="spec-label">Paro de emergencia:</span> <span class="spec-value">Incluido</span></li>
+                        <li><span class="spec-label">Protección sobrecarga:</span> <span class="spec-value">Automática</span></li>
+                        <li><span class="spec-label">Ventilación:</span> <span class="spec-value">Asistida integrada</span></li>
+                    
