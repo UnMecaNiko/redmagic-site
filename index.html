@@ -1,932 +1,1172 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Magic | Protecna - Máquina Láser Profesional</title>
-    <meta name="description" content="Red Magic de Protecna - Máquina láser profesional para grabado y corte. Tecnología FAC, 80W de potencia, ideal para empresas y artistas.">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Header */
-        .header {
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .header.scrolled {
-            background: rgba(0, 0, 0, 0.98);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #D72323;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo::before {
-            content: "⚡";
-            font-size: 2rem;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            color: #F5EDED;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 500;
-        }
-
-        .nav-menu a:hover {
-            color: #D72323;
-        }
-
-        .whatsapp-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .whatsapp-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #000000 0%, #3E3636 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #F5EDED;
-            position: relative;
-            overflow: hidden;
-            padding: 2rem 0;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(215,35,35,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .hero-image {
-            width: 100%;
-            max-width: 600px;
-            height: 300px;
-            background: #3E3636;
-            border-radius: 20px;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed #D72323;
-            color: #F5EDED;
-            font-size: 1.1rem;
-            text-align: center;
-            padding: 2rem;
-            z-index: 2;
-            position: relative;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content {
-            max-width: 1000px;
-            padding: 0 2rem;
-            z-index: 2;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #D72323, #F5EDED);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: #F5EDED;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .hero-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .hero-feature {
-            background: rgba(62, 54, 54, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(215, 35, 35, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .hero-feature:hover {
-            transform: translateY(-5px);
-            background: rgba(62, 54, 54, 0.5);
-        }
-
-        .hero-feature h3 {
-            color: #D72323;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .cta-section {
-            margin-top: 3rem;
-            animation: fadeInUp 1s ease 0.8s both;
-        }
-
-        .cta-primary {
-            background: linear-gradient(135deg, #D72323, #F5EDED);
-            color: #000000;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            display: inline-block;
-            margin: 0 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .cta-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(215, 35, 35, 0.4);
-        }
-
-        /* Product Showcase */
-        .product-showcase {
-            padding: 6rem 0;
-            background: #F5EDED;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #000000;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-bottom: 4rem;
-        }
-
-        /* Carousel Styles */
-        .carousel-container {
-            position: relative;
-            background: #fff;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .carousel {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            border-radius: 15px;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease;
-            height: 100%;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #3E3636;
-            border: 2px dashed #D72323;
-            color: #F5EDED;
-            font-size: 1rem;
-            text-align: center;
-            padding: 2rem;
-            box-sizing: border-box;
-        }
-
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(215, 35, 35, 0.8);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .carousel-nav:hover {
-            background: #D72323;
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .carousel-prev {
-            left: 10px;
-        }
-
-        .carousel-next {
-            right: 10px;
-        }
-
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(215, 35, 35, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-dot.active {
-            background: #D72323;
-            transform: scale(1.2);
-        }
-
-        .product-info h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            color: #000000;
-        }
-
-        .product-info p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: #3E3636;
-        }
-
-        .features-list {
-            list-style: none;
-        }
-
-        .features-list li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1rem;
-            color: #3E3636;
-        }
-
-        .features-list li::before {
-            content: "✓";
-            color: #D72323;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* Applications Section */
-        .applications {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, #000000, #3E3636);
-            color: #F5EDED;
-        }
-
-        .applications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .application-card {
-            background: rgba(62, 54, 54, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(215, 35, 35, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .application-card:hover {
-            transform: translateY(-5px);
-            background: rgba(62, 54, 54, 0.5);
-            border-color: #D72323;
-        }
-
-        .application-card h3 {
-            color: #D72323;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .application-card ul {
-            list-style: none;
-        }
-
-        .application-card li {
-            padding: 0.3rem 0;
-            color: #F5EDED;
-        }
-
-        .application-card li::before {
-            content: "•";
-            color: #D72323;
-            margin-right: 0.5rem;
-        }
-
-        /* Gallery Section */
-        .gallery {
-            padding: 6rem 0;
-            background: #F5EDED;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .gallery-item {
-            background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed #D72323;
-            color: #3E3636;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(215, 35, 35, 0.2);
-        }
-
-        /* Specifications */
-        .specs {
-            padding: 6rem 0;
-            background: #fff;
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .spec-card {
-            background: #F5EDED;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #D72323;
-            transition: all 0.3s ease;
-        }
-
-        .spec-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .spec-card h3 {
-            color: #000000;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .spec-list {
-            list-style: none;
-        }
-
-        .spec-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(215, 35, 35, 0.2);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .spec-list li:last-child {
-            border-bottom: none;
-        }
-
-        .spec-label {
-            font-weight: bold;
-            color: #3E3636;
-        }
-
-        .spec-value {
-            color: #000000;
-        }
-
-        /* Footer */
-        .footer {
-            background: #000000;
-            color: #F5EDED;
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            color: #D72323;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section p, .footer-section li {
-            color: #F5EDED;
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
-            color: #F5EDED;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            opacity: 0.8;
-        }
-
-        .footer-section a:hover {
-            color: #D72323;
-            opacity: 1;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(245, 237, 237, 0.2);
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(245, 237, 237, 0.6);
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(215, 35, 35, 0.2);
-            z-index: 9999;
-        }
-
-        .scroll-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #D72323, #F5EDED);
-            width: 0%;
-            transition: width 0.1s ease;
-        }}
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .product-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .hero-features {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-primary {
-                display: block;
-                margin: 1rem 0;
-            }
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 51, 102, 0.2);
-            z-index: 9999;
-        }
-
-        .scroll-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #ff3366, #ff6b9d);
-            width: 0%;
-            transition: width 0.1s ease;
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Bino html5 free Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!--Google Fonts link-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="assets/css/iconfont.css">
+    <link rel="stylesheet" href="assets/css/slick/slick.css">
+    <link rel="stylesheet" href="assets/css/slick/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/jquery.fancybox.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
+
+
+    <!--For Plugins external css-->
+    <link rel="stylesheet" href="assets/css/plugins.css" />
+
+    <!--Theme custom css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!--Theme Responsive css-->
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+
+    <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
-<body>
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-        <div class="scroll-progress" id="scrollProgress"></div>
+
+<body data-spy="scroll" data-target=".navbar-collapse">
+
+    <div class='preloader'>
+        <div class='loaded'>&nbsp;</div>
+    </div>
+    <div class="culmn">
+        <header id="main_menu" class="header navbar-fixed-top">
+            <div class="main_menu_bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="nave_menu">
+                            <nav class="navbar navbar-default">
+                                <div class="container-fluid">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="#home">
+                                            <img src="assets/images/logo.png" />
+                                        </a>
+                                    </div>
+
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+
+
+
+                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li><a href="#home">HOME</a></li>
+                                            <li><a href="#history">ABOUT US</a></li>
+                                            <li><a href="#portfolio">PORTFOLIO</a></li>
+                                            <li><a href="#pricing">PRICING</a></li>
+                                            <li><a href="#team">TEAM</a></li>
+                                            <li><a href="#blog">BLOG</a></li>
+                                            <li><a href="#contact">CONTACT</a></li>
+                                        </ul>
+
+
+                                    </div>
+
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </header>
+        <!--End of header -->
+
+
+
+
+        <!--home Section -->
+        <section id="home" class="home">
+            <div class="overlay">
+                <div class="home_skew_border">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 ">
+                                <div class="main_home_slider text-center">
+                                    <div class="single_home_slider">
+                                        <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                            <h3>Our Clients Are Our First Priority</h3>
+                                            <h1>WELCOME TO BINO</h1>
+                                            <div class="separator"></div>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's
+                                                standard dummy text ever since the 1500s, when an unknown printer took a
+                                                galley
+                                                of type and scrambled it to make a type specimen book.</p>
+                                            <div class="home_btn">
+                                                <a href="https://bootstrapthemes.co" class="btn btn-lg m_t_10">GET
+                                                    STARTED NOW</a>
+                                                <a href="https://bootstrapthemes.co" class="btn btn-default">LEARN
+                                                    MORE</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="single_home_slider">
+                                        <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                            <h3>Our Clients Are Our First Priority</h3>
+                                            <h1>WELCOME TO BINO</h1>
+                                            <div class="separator"></div>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's
+                                                standard dummy text ever since the 1500s, when an unknown printer took a
+                                                galley
+                                                of type and scrambled it to make a type specimen book.</p>
+                                            <div class="home_btn">
+                                                <a href="https://bootstrapthemes.co" class="btn btn-lg m_t_10">GET
+                                                    STARTED NOW</a>
+                                                <a href="https://bootstrapthemes.co" class="btn btn-default">LEARN
+                                                    MORE</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="single_home_slider">
+                                        <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                            <h3>Our Clients Are Our First Priority</h3>
+                                            <h1>WELCOME TO BINO</h1>
+                                            <div class="separator"></div>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's
+                                                standard dummy text ever since the 1500s, when an unknown printer took a
+                                                galley
+                                                of type and scrambled it to make a type specimen book.</p>
+                                            <div class="home_btn">
+                                                <a href="https://bootstrapthemes.co" class="btn btn-lg m_t_10">GET
+                                                    STARTED NOW</a>
+                                                <a href="https://bootstrapthemes.co" class="btn btn-default">LEARN
+                                                    MORE</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scrooldown">
+                        <a href="#feature"><i class="fa fa-arrow-down"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End of home section -->
+
+
+        <!--feature section -->
+        <section id="feature" class="feature sections">
+            <div class="container">
+                <div class="row">
+                    <div class="main_feature text-center">
+
+                        <div class="col-sm-3">
+                            <div class="single_feature">
+                                <div class="single_feature_icon">
+                                    <i class="fa fa-clone"></i>
+                                </div>
+
+                                <h4>SLEEK DESIGN</h4>
+                                <div class="separator3"></div>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting let.
+                                    Lorem Ipsum has been the industry.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="single_feature">
+                                <div class="single_feature_icon">
+                                    <i class="fa fa-heart-o"></i>
+                                </div>
+
+                                <h4>CLEAN CODE</h4>
+                                <div class="separator3"></div>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting let.
+                                    Lorem Ipsum has been the industry.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="single_feature">
+                                <div class="single_feature_icon">
+                                    <i class="fa fa-lightbulb-o"></i>
+                                </div>
+                                <h4>CREATIVE IDEAS</h4>
+                                <div class="separator3"></div>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting let.
+                                    Lorem Ipsum has been the industry.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="single_feature">
+                                <div class="single_feature_icon">
+                                    <i class="fa fa-comments-o"></i>
+                                </div>
+
+                                <h4>FREE SUPPORT</h4>
+                                <div class="separator3"></div>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting let.
+                                    Lorem Ipsum has been the industry.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--End of container -->
+        </section>
+        <!--End of feature Section -->
+        <hr />
+
+
+        <!-- History section -->
+        <section id="history" class="history sections">
+            <div class="container">
+                <div class="row">
+                    <div class="main_history">
+                        <div class="col-sm-6">
+                            <div class="single_history_img">
+                                <img src="assets/images/stab1.png" alt="" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="single_history_content">
+                                <div class="head_title">
+                                    <h2>OUR HISTORY</h2>
+                                </div>
+                                <p>It is a long established fact that a reader will be distracted by the readable
+                                    content of a page
+                                    when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                    more-or-less normal
+                                    distribution of letters, as opposed to using 'Content here, content here', making it
+                                    look like readable English. Many desktop publishing packages and web page editors
+                                    now use
+                                    Lorem Ipsum as their default model text, and a search for 'lorem ipsum' </p>
+
+                                <a href="" class="btn btn-lg">BROWSE OUR WORK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End of row -->
+            </div>
+            <!--End of container -->
+        </section>
+        <!--End of history -->
+
+
+        <!-- service Section -->
+        <section id="service" class="service">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="main_service">
+                        <div class="col-md-6 col-sm-12 no-padding">
+
+                            <div class="single_service single_service_text text-right">
+                                <div class="head_title">
+                                    <h2>OUR SERVICES</h2>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-10 col-xs-10 margin-bottom-60">
+                                        <div class="row">
+
+                                            <div class="col-sm-10 col-sm-offset-1 col-xs-9 col-xs-offset-1">
+                                                <article class="single_service_right_text">
+                                                    <h4>WEB DESIGN</h4>
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                        industry.
+                                                        Lorem Ip sum has been the industry's standard dummy text ever.
+                                                    </p>
+                                                </article>
+                                            </div>
+                                            <div class="col-sm-1 col-xs-1">
+                                                <figure class="single_service_icon">
+                                                    <i class="fa fa-heart"></i>
+                                                </figure><!-- End of figure -->
+                                            </div>
+                                        </div>
+                                    </div><!-- End of col-sm-12 -->
+
+                                    <div class="col-md-12 col-sm-10 col-xs-10 margin-bottom-60">
+                                        <div class="row">
+
+                                            <div class="col-sm-10 col-sm-offset-1 col-xs-9 col-xs-offset-1">
+                                                <article class="single_service_right_text">
+                                                    <h4>PRINT DESIGN</h4>
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                        industry.
+                                                        Lorem Ip sum has been the industry's standard dummy text ever.
+                                                    </p>
+                                                </article>
+                                            </div>
+                                            <div class="col-sm-1 col-xs-1">
+                                                <figure class="single_service_icon">
+                                                    <i class="fa fa-heart"></i>
+                                                </figure><!-- End of figure -->
+                                            </div>
+                                        </div>
+                                    </div><!-- End of col-sm-12 -->
+
+                                    <div class="col-md-12 col-sm-10 col-xs-10 margin-bottom-60">
+                                        <div class="row">
+
+                                            <div
+                                                class="col-sm-10 col-sm-offset-1 col-xs-9 col-xs-offset-1 margin-bottom-20">
+                                                <article class="single_service_right_text">
+                                                    <h4>PHOTOGRAPHY</h4>
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                        industry.
+                                                        Lorem Ip sum has been the industry's standard dummy text ever.
+                                                    </p>
+                                                </article>
+                                            </div>
+                                            <div class="col-sm-1 col-xs-1">
+                                                <figure class="single_service_icon">
+                                                    <i class="fa fa-heart"></i>
+                                                </figure><!-- End of figure -->
+                                            </div>
+                                        </div>
+                                    </div><!-- End of col-sm-12 -->
+
+                                </div>
+                            </div>
+                        </div><!-- End of col-sm-6 -->
+
+                        <div class="col-md-6 col-sm-12 no-padding">
+                            <figure class="single_service single_service_img">
+                                <div class="overlay-img"></div>
+                                <img src="assets/images/servicerightimg.jpg" alt="" />
+                            </figure><!-- End of figure -->
+                        </div><!-- End of col-sm-6 -->
+
+                    </div>
+                </div><!-- End of row -->
+            </div><!-- End of Container-fluid -->
+        </section><!-- End of service Section -->
+
+
+        <section id="portfolio" class="portfolio sections">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="main_portfolio">
+                        <div class="col-sm-12">
+                            <div class="head_title text-center">
+                                <h2>RECENT WORKS</h2>
+                                <div class="subtitle">
+                                    It has survived not only five centuries, but also the leap scrambled it to make a
+                                    type.
+                                </div>
+                                <div class="separator"></div>
+                            </div>
+                        </div>
+                        <div class="work_menu text-center">
+                            <div id="filters" class="toolbar mb2 mt2">
+                                <button class="btn-md fil-cat filter active" data-filter="all">ALL</button>/
+                                <button class="btn-md fil-cat filter" data-rel="web" data-filter=".web">WEB
+                                    DESIGN</button>/
+                                <button class="btn-md fil-cat filter" data-rel="design" data-filter=".design">PRINT
+                                    DESIGN</button>/
+                                <button class="btn-md fil-cat filter" data-rel="flyers"
+                                    data-filter=".flyers">ANIMATION</button>/
+                                <button class="btn-md fil-cat filter" data-rel="bcards"
+                                    data-filter=".bcards">ART</button>/
+                                <button class="btn-md fil-cat filter" data-rel="photo"
+                                    data-filter=".photo">PHOTOGRAPHY</button>/
+                                <button class="btn-md fil-cat filter" data-rel="video"
+                                    data-filter=".video">VIDEO</button>
+                            </div>
+
+                        </div>
+
+                        <div style="clear:both;"></div>
+                        <div id="portfoliowork">
+                            <div class="single_portfolio tile scale-anm web grid-item-width2 video">
+                                <img src="assets/images/pf1.jpg" alt="" />
+                                <a href="assets/images/pf1.jpg" class="portfolio-img">
+                                    <div class="grid_item_overlay">
+                                        <div class="separator4"></div>
+                                        <h3>T-SHIRT DESIGN</h3>
+                                        <p>art / t-shirt</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="single_portfolio tile scale-anm bcards photo">
+                                <img src="assets/images/pf2.jpg" alt="" />
+                                <a href="assets/images/pf2.jpg" class="portfolio-img">
+                                    <div class="grid_item_overlay">
+                                        <div class="separator4"></div>
+                                        <h3>T-SHIRT DESIGN</h3>
+                                        <p>art / t-shirt</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="single_portfolio tile scale-anm web video">
+                                <img src="assets/images/pf3.jpg" alt="" />
+                                <a href="assets/images/pf3.jpg" class="portfolio-img">
+                                    <div class="grid_item_overlay">
+                                        <div class="separator4"></div>
+                                        <h3>T-SHIRT DESIGN</h3>
+                                        <p>art / t-shirt</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="single_portfolio tile scale-anm web photo">
+                                <img src="assets/images/pf4.jpg" alt="" />
+                                <a href="assets/images/pf4.jpg" class="portfolio-img">
+                                    <div class="grid_item_overlay">
+                                        <div class="separator4"></div>
+                                        <h3>T-SHIRT DESIGN</h3>
+                                        <p>art / t-shirt</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="single_portfolio tile scale-anm bcards design">
+                                <img src="assets/images/pf5.jpg" alt="" />
+                                <a href="assets/images/pf5.jpg" class="portfolio-img">
+                                    <div class="grid_item_overlay">
+                                        <div class="separator4"></div>
+                                        <h3>T-SHIRT DESIGN</h3>
+                                        <p>art / t-shirt</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="single_portfolio tile scale-anm flyers video design">
+                                <img src="assets/images/pf6.jpg" alt="" />
+                                <a href="assets/images/pf6.jpg" class="portfolio-img">
+                                    <div class="grid_item_overlay">
+                                        <div class="separator4"></div>
+                                        <h3>T-SHIRT DESIGN</h3>
+                                        <p>art / t-shirt</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="single_portfolio tile scale-anm photo flyers">
+                                <img src="assets/images/pf7.jpg" alt="" />
+                                <a href="assets/images/pf7.jpg" class="portfolio-img">
+                                    <div class="grid_item_overlay">
+                                        <div class="separator4"></div>
+                                        <h3>T-SHIRT DESIGN</h3>
+                                        <p>art / t-shirt</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="single_portfolio tile scale-anm bcards video">
+                                <img src="assets/images/pf8.jpg" alt="" />
+                                <a href="assets/images/pf8.jpg" class="portfolio-img">
+                                    <div class="grid_item_overlay">
+                                        <div class="separator4"></div>
+                                        <h3>T-SHIRT DESIGN</h3>
+                                        <p>art / t-shirt</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+            </div><!-- End off container -->
+        </section> <!-- End off Work Section -->
+
+
+
+        <!-- Study Section -->
+        <section id="study" class="study text-center wow fadeIn" data-wow-duration="2s" data-wow-dealy="1.5s">
+            <div class="container">
+                <div class="row">
+                    <div class="main_study_area sections">
+                        <div class="head_title text-center">
+                            <h2>CASE STUDY</h2>
+                            <div class="subtitle">
+                                A brief story about how this process works, keep an eye till the end.
+                            </div>
+                            <div class="separator"></div>
+                        </div>
+                        <div class="single_study_content">
+                            <div class="col-sm-6">
+                                <div class="single_study_slid_area">
+
+                                    <div class="single_study_text">
+                                        <div class="study_slider">
+                                            <div class="item">
+                                                <div class="s_study_icon">
+                                                    <i class="fa fa-lightbulb-o"></i>
+                                                </div>
+                                                <h4>aCCUMULATE CREATIVE IDEAS</h4>
+                                                <div class="separator3"></div>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting let.
+                                                    Lorem Ipsum has been the industry.
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    let.
+                                                    Lorem Ipsum has been the industry Printing and typelorem Ipsum has
+                                                    been the setting let.</p>
+
+                                                <a href="" class="btn btn-lg">read more</a>
+                                            </div>
+                                            <div class="item">
+                                                <div class="s_study_icon">
+                                                    <i class="fa fa-lightbulb-o"></i>
+                                                </div>
+                                                <h4>aCCUMULATE CREATIVE IDEAS</h4>
+                                                <div class="separator3"></div>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting let.
+                                                    Lorem Ipsum has been the industry.
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    let.
+                                                    Lorem Ipsum has been the industry Printing and typelorem Ipsum has
+                                                    been the setting let.</p>
+
+                                                <a href="" class="btn btn-lg">read more</a>
+                                            </div>
+                                            <div class="item">
+                                                <div class="s_study_icon">
+                                                    <i class="fa fa-lightbulb-o"></i>
+                                                </div>
+                                                <h4>aCCUMULATE CREATIVE IDEAS</h4>
+                                                <div class="separator3"></div>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting let.
+                                                    Lorem Ipsum has been the industry.
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    let.
+                                                    Lorem Ipsum has been the industry Printing and typelorem Ipsum has
+                                                    been the setting let.</p>
+
+                                                <a href="" class="btn btn-lg">read more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="single_study_right_img">
+                                <div class="col-sm-6">
+                                    <div class="single_study_img">
+                                        <img src="assets/images/study.jpg" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End off row -->
+            </div><!-- End off Container -->
+        </section><!-- End off Study Section -->
+
+
+        <!-- Counter Section -->
+        <section id="counter" class="counter">
+            <div class="video_overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="main_counter_area text-center">
+
+                                <div class="row">
+                                    <div class="single_counter border_right">
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="single_counter_item">
+                                                <i class="icon icon-thumbs-up"></i>
+                                                <h2 class="statistic-counter">3891</h2>
+                                                <h4 class="">User Favourites</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="single_counter">
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="single_counter_item">
+                                                <i class="icon icon-business-3"></i>
+                                                <h2 class="statistic-counter">281</h2>
+                                                <h4 class="">Posts Last 24 Hours</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="single_counter">
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="single_counter_item">
+                                                <i class="icon icon-people-32"></i>
+                                                <h2 class="statistic-counter">618</h2>
+                                                <h4 class="">Total Posts</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="single_counter">
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="single_counter_item">
+                                                <i class="icon icon-cup"></i>
+                                                <h2 class="statistic-counter">178</h2>
+                                                <h4 class="">Amazing Features</h4>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End off container -->
+        </section> <!-- End of counter section -->
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <div class="row">
+                    <div class="main_pricing_area sections">
+                        <div class="head_title text-center">
+                            <h2>OUR PRICING</h2>
+                            <div class="subtitle">
+                                A 30 days free trial for all. A brief story about how this process works, keep an eye
+                                till the end.
+                            </div>
+                            <div class="separator"></div>
+                        </div><!-- End off Head_title -->
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single_pricing">
+                                <div class="pricing_head">
+                                    <h3>STARTER</h3>
+                                    <div class="pricing_price">
+                                        <div class="p_r text-center">$19</div>
+                                        <div class="m_t text-center">per month</div>
+                                    </div>
+                                </div>
+
+                                <div class="pricing_body">
+                                    <ul>
+                                        <li>Competition Analysis Methods</li>
+                                        <li>All Ranked URLs</li>
+                                        <li>International Support System</li>
+                                        <li>Social Media Tracking</li>
+                                    </ul>
+                                    <a href="https://bootstrapthemes.co" class="btn btn-md">CHOOSE PLAN</a>
+                                </div>
+                            </div>
+                        </div> <!-- End off col-md-4 -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single_pricing pricing_business">
+                                <div class="pricing_head ">
+                                    <h3>PREMIUM</h3>
+                                    <div class="pricing_price">
+                                        <div class="p_r text-center">$39</div>
+                                        <div class="m_t text-center">per month</div>
+                                    </div>
+                                </div>
+
+                                <div class="pricing_body">
+                                    <ul>
+                                        <li>Competition Analysis Methods</li>
+                                        <li>All Ranked URLs</li>
+                                        <li>International Support System</li>
+                                        <li>Social Media Tracking</li>
+                                    </ul>
+                                    <a href="https://bootstrapthemes.co" class="btn btn-md">CHOOSE PLAN</a>
+                                </div>
+                            </div>
+                        </div> <!-- End off col-md-4 -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single_pricing">
+                                <div class="pricing_head">
+                                    <h3>BUSINESS</h3>
+                                    <div class="pricing_price">
+                                        <div class="p_r text-center">$99</div>
+                                        <div class="m_t text-center">per month</div>
+                                    </div>
+                                </div>
+
+                                <div class="pricing_body">
+                                    <ul>
+                                        <li>Competition Analysis Methods</li>
+                                        <li>All Ranked URLs</li>
+                                        <li>International Support System</li>
+                                        <li>Social Media Tracking</li>
+                                    </ul>
+                                    <a href="https://bootstrapthemes.co" class="btn btn-md">CHOOSE PLAN</a>
+                                </div>
+                            </div>
+                        </div> <!-- End off col-md-4 -->
+                    </div>
+                </div><!-- End off row -->
+            </div><!-- End off container -->
+        </section><!-- End off Pricing Section -->
+
+        <!-- Team Section -->
+        <section id="team" class="team">
+            <div class="main_team_area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="head_title textwhite text-center margin-top-80">
+                                <h2>OUR TEAM</h2>
+                                <div class="subtitle">
+                                    Meet the craziest team. Share your thoughts with them.
+                                </div>
+                                <div class="separator"></div>
+                            </div><!-- End off Head_title -->
+
+                            <div class="main_team">
+                                <ul>
+                                    <li>
+                                        <div class="single_team_img">
+                                            <img src="assets/images/team1.jpg" alt="" />
+                                        </div>
+                                        <div class="single_team_text">
+                                            <h4>Semf Ucuk</h4>
+                                            <p>Founder</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single_team_img">
+                                            <img src="assets/images/team2.jpg" alt="" />
+                                        </div>
+                                        <div class="single_team_text">
+                                            <h4>Kazi Erfan</h4>
+                                            <p>Engineering</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single_team_img">
+                                            <img src="assets/images/team3.jpg" alt="" />
+                                        </div>
+                                        <div class="single_team_text">
+                                            <h4>Jeng Koli</h4>
+                                            <p>Designer</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single_team_img">
+                                            <img src="assets/images/team4.jpg" alt="" />
+                                        </div>
+                                        <div class="single_team_text">
+                                            <h4>Pet Romak</h4>
+                                            <p>Marketing</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single_team_img">
+                                            <img src="assets/images/test2.jpg" alt="" />
+                                        </div>
+                                        <div class="single_team_text">
+                                            <h4>Chet Pok</h4>
+                                            <p>Web Developer</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div><!-- End of main team contant -->
+                    </div>
+                </div><!-- End of container -->
+            </div>
+        </section><!-- End off Team Section -->
+
+        <!-- Client Logo Section -->
+        <section id="clogo" class="clogo">
+            <div class="container">
+                <div class="row">
+                    <div class="main_clogo sections text-center">
+                        <div class="head_title text-center">
+                            <h2>Great Integrations with Others</h2>
+                            <div class="subtitle">
+                                Suspendisse sed eros mollis, tincidunt felis eget, interdum erat.
+                                Nullam sit amet odio eu est aliquet euismod a a urna. Proin eu urna suscipit, dictum
+                                quam nec.
+                            </div>
+                            <div class="separator"></div>
+                        </div><!-- End off Head_title -->
+
+                        <div class="col-sm-3 col-xs-6">
+                            <a href=""><img src="assets/images/clogo1.png" alt="" /></a>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <a href=""><img src="assets/images/clogo2.png" alt="" /></a>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <a href=""><img src="assets/images/clogo3.png" alt="" /></a>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <a href=""><img src="assets/images/clogo4.png" alt="" /></a>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <a href=""><img src="assets/images/clogo5.png" alt="" /></a>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <a href=""><img src="assets/images/clogo6.png" alt="" /></a>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <a href=""><img src="assets/images/clogo9.png" alt="" /></a>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <a href=""><img src="assets/images/clogo8.png" alt="" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+        </section><!-- End off clogo Section -->
+
+
+        <!-- Blog Section -->
+        <section id="blog" class="blog">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="main_blog sections">
+                        <div class="head_title text-center">
+                            <h2>OUR BLOG</h2>
+                            <div class="subtitle">
+                                Suspendisse sed eros mollis, tincidunt felis eget, interdum eratullam sit amet odio.
+                            </div>
+                            <div class="separator"></div>
+                        </div><!-- End off Head_title -->
+
+                        <div class="main_blog_content">
+                            <div class="col-sm-6">
+                                <div class="single_blog_area textwhite">
+                                    <div class="row">
+                                        <div class="col-sm-6 no-padding">
+                                            <div class="single_blog_img">
+                                                <img src="assets/images/blog1.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 no-padding">
+                                            <div class="single_blog_text s_b_left">
+                                                <p>art/t-shirt</p>
+                                                <h3>T-SHIRT DESIGN</h3>
+                                                <div class="separator2"></div>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    industry. Lorem Ipsum has been the indu Stry's
+                                                    standard dummy text ever since the 1500s, an unknown printer took a
+                                                    galley of type
+                                                    a scrambled it to make a type specimen book.</p>
+
+                                                <a href="" class="read_more">Read More >></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="single_blog_area textwhite">
+                                    <div class="row">
+                                        <div class="col-sm-6 no-padding">
+                                            <div class="single_blog_img">
+                                                <img src="assets/images/blog2.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 no-padding">
+                                            <div class="single_blog_text s_b_left">
+                                                <p>art/t-shirt</p>
+                                                <h3>T-SHIRT DESIGN</h3>
+                                                <div class="separator2"></div>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    industry. Lorem Ipsum has been the indu Stry's
+                                                    standard dummy text ever since the 1500s, an unknown printer took a
+                                                    galley of type
+                                                    a scrambled it to make a type specimen book.</p>
+
+                                                <a href="" class="read_more">Read More >></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="single_blog_area textwhite">
+                                    <div class="row">
+
+                                        <div class="col-sm-6 col-sm-push-6 no-padding">
+                                            <div class="single_blog_img">
+                                                <img src="assets/images/blog3.jpg" alt="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-sm-pull-6 no-padding">
+                                            <div class="single_blog_text s_b_right">
+                                                <p>art/t-shirt</p>
+                                                <h3>T-SHIRT DESIGN</h3>
+                                                <div class="separator2"></div>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    industry. Lorem Ipsum has been the indu Stry's
+                                                    standard dummy text ever since the 1500s, an unknown printer took a
+                                                    galley of type
+                                                    a scrambled it to make a type specimen book.</p>
+
+                                                <a href="" class="read_more">Read More >></a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="single_blog_area textwhite">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-push-6 no-padding">
+                                            <div class="single_blog_img">
+                                                <img src="assets/images/blog4.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-sm-pull-6 no-padding">
+                                            <div class="single_blog_text s_b_right">
+                                                <p>art/t-shirt</p>
+                                                <h3>T-SHIRT DESIGN</h3>
+                                                <div class="separator2"></div>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    industry. Lorem Ipsum has been the indu Stry's
+                                                    standard dummy text ever since the 1500s, an unknown printer took a
+                                                    galley of type
+                                                    a scrambled it to make a type specimen book.</p>
+
+                                                <a href="" class="read_more">Read More >></a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div><!-- End off container -->
+        </section><!-- End off Blog Section -->
+
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="contact_contant sections">
+                            <div class="head_title text-center">
+                                <h2>kEEP IN TOUCH</h2>
+                                <div class="subtitle">
+                                    Nullam sit amet odio eu est aliquet euismod a a urna. Proin eu urna suscipit, dictum
+                                    quam nec.
+                                </div>
+                                <div class="separator"></div>
+                            </div><!-- End off Head_title -->
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="main_contact_info">
+                                        <div class="row">
+                                            <div class="contact_info_content padding-top-90 padding-bottom-60 p_l_r">
+                                                <div class="col-sm-12">
+                                                    <div class="single_contact_info">
+                                                        <div class="single_info_text">
+                                                            <h3>OUR ADDRESS</h3>
+                                                            <h4>House #13, Streat road, Sydney
+                                                                2310 Australia</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="single_contact_info">
+                                                        <div class="single_info_text">
+                                                            <h3>CALL US</h3>
+                                                            <h4>+ 880 168 109 1425</h4>
+                                                            <h4>+ 0216809142</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="single_contact_info">
+                                                        <div class="single_info_text">
+                                                            <h3>EMAIL US</h3>
+                                                            <h4>contactus@email.com</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="single_contant_left padding-top-90 padding-bottom-90">
+                                        <form action="#" id="formid">
+                                            <div
+                                                class="col-lg-8 col-md-8 col-sm-10 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="name"
+                                                                placeholder="First Name" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control" name="email"
+                                                                placeholder="Email" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="subject"
+                                                                placeholder="Subject" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <textarea class="form-control" name="message" rows="7"
+                                                        placeholder="Message"></textarea>
+                                                </div>
+
+                                                <div class="">
+                                                    <input type="submit" value="SEND MESSAGE" class="btn btn-lg">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End of contact section -->
+
+        <section id="trial" class="trial text-center wow fadeIn" data-wow-duration="2s" data-wow-dealy="1.5s">
+            <div class="main_trial_area">
+                <div class="video_overlay sections">
+                    <div class="container">
+                        <div class="row">
+                            <div class="main_trial">
+                                <div class="col-sm-12">
+                                    <h2>Let's Get Started Now. <span>It's FREE!</span></h2>
+                                    <h4>30 day free trial. Free plan allows up to 2 projects. Pay if you need more.
+                                        Cancel anytime. No catches.</h4>
+                                    <a href="" class="btn btn-lg">start free trial</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End of Trial section -->
+
+
+        <!--Footer section-->
+        <section class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="main_footer">
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-12">
+                                    <div class="flowus">
+                                        <a href=""><i class="fa fa-facebook"></i></a>
+                                        <a href=""><i class="fa fa-twitter"></i></a>
+                                        <a href=""><i class="fa fa-google-plus"></i></a>
+                                        <a href=""><i class="fa fa-instagram"></i></a>
+                                        <a href=""><i class="fa fa-youtube"></i></a>
+                                        <a href=""><i class="fa fa-dribbble"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-xs-12">
+                                    <div class="copyright_text">
+                                        <p class=" wow fadeInRight" data-wow-duration="1s">Made with <i
+                                                class="fa fa-heart"></i> by <a
+                                                href="https://bootstrapthemes.co">Bootstrap Themes </a>2016. All Rights
+                                            Reserved</p>
+                                    </div>
+
+                                    <div class="copyright_text">
+                                        <p class=" wow fadeInRight" data-wow-duration="1s">Distributed <i
+                                                class="fa fa-heart"></i> by <a
+                                                href="https://themewagon.com/">Themewagon</a>2016. All Rights
+                                            Reserved</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End off footer Section-->
+
+
+
+
+
+
+
+
+
+
+
     </div>
 
-    <!-- Header -->
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <a href="#" class="logo">PROTECNA</a>
-            <ul class="nav-menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#producto">Producto</a></li>
-                <li><a href="#aplicaciones">Aplicaciones</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#especificaciones">Especificaciones</a></li>
-            </ul>
-            <a href="https://wa.me/+573204081631?text=Hola,%20estoy%20interesado%20en%20la%20máquina%20Red%20Magic" 
-               class="whatsapp-btn" target="_blank">
-                📱 WhatsApp
-            </a>
-        </nav>
-    </header>
+    <!-- START SCROLL TO TOP  -->
 
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="hero-content">
-            <h1>RED MAGIC</h1>
-            <p class="subtitle">Máquina Láser Profesional de Alta Precisión</p>
-            
-            <div class="hero-features">
-                <div class="hero-feature">
-                    <h3>80W de Potencia</h3>
-                    <p>10W de salida óptica con tecnología FAC</p>
-                </div>
-                <div class="hero-feature">
-                    <h3>Área de Trabajo</h3>
-                    <p>400mm x 400mm de precisión</p>
-                </div>
-                <div class="hero-feature">
-                    <h3>Múltiples Materiales</h3>
-                    <p>Graba y corta más de 12 tipos de materiales</p>
-                </div>
-                <div class="hero-feature">
-                    <h3>Diseño Compacto</h3>
-                    <p>Profesional y fácil de usar</p>
-                </div>
-            </div>
+    <div class="scrollup">
+        <a href="#"><i class="fa fa-chevron-up"></i></a>
+    </div>
 
-            <div class="cta-section">
-                <a href="#producto" class="cta-primary">Conocer Más</a>
-                <a href="https://wa.me/+573204081631?text=Hola,%20quiero%20información%20sobre%20Red%20Magic" 
-                   class="whatsapp-btn" target="_blank">
-                    📱 Contactar Ahora
-                </a>
-            </div>
-        </div>
-    </section>
+    <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
 
-    <!-- Product Showcase -->
-    <section class="product-showcase" id="producto">
-        <div class="container">
-            <h2 class="section-title">Conoce Red Magic</h2>
-            
-            <div class="product-grid">
-                <div class="product-image">
-                    <div>
-                        <strong>Imagen Principal del Producto</strong><br>
-                        Sugerencia: Foto frontal de la máquina Red Magic con buena iluminación, 
-                        mostrando la cúpula de acrílico rojo y el diseño compacto. 
-                        Fondo limpio y profesional.
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h2>Tecnología de Vanguardia</h2>
-                    <p>Red Magic incorpora tecnología de compresión FAC que permite grabado y corte rápido y preciso en una amplia variedad de materiales, desde papel hasta acero inoxidable.</p>
-                    
-                    <ul class="features-list">
-                        <li>Láser de 80W con 10W de salida óptica</li>
-                        <li>Sistema de aire asistido integrado</li>
-                        <li>Cúpula de protección ocular en acrílico rojo</li>
-                        <li>Ventilación y extracción de humo</li>
-                        <li>Motores paso a paso de alta precisión</li>
-                        <li>Compatible con GRBL y LightBurn</li>
-                        <li>Conexión USB directa</li>
-                        <li>Iluminación LED interna</li>
-                    </ul>
-                </div>
-            </div>
+    <script src="assets/js/jquery.magnific-popup.js"></script>
+    <script src="assets/js/jquery.mixitup.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/jquery.masonry.min.js"></script>
 
-            <div class="product-grid">
-                <div class="product-info">
-                    <h2>Diseño Mecánico Superior</h2>
-                    <p>Construida con materiales de alta calidad: acero 1045, aluminio extruido y componentes de precisión que garantizan durabilidad y exactitud en cada proyecto.</p>
-                    
-                    <ul class="features-list">
-                        <li>Ejes X-Y con tornillo helicoidal</li>
-                        <li>Bujes lineales de alta precisión</li>
-                        <li>Parrilla de corte tipo panal de abeja</li>
-                        <li>Sistema de protección contra sobrecarga</li>
-                        <li>Paro de emergencia integrado</li>
-                        <li>Ventilación asistida en zona electrónica</li>
-                    </ul>
-                </div>
-                <div class="product-image">
-                    <div>
-                        <strong>Imagen del Sistema Mecánico</strong><br>
-                        Sugerencia: Foto detalle de los ejes X-Y, mostrando los tornillos helicoidales 
-                        y bujes lineales. También incluir la parrilla panal de abeja.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!--slick slide js -->
+    <script src="assets/css/slick/slick.js"></script>
+    <script src="assets/css/slick/slick.min.js"></script>
 
-    <!-- Applications -->
-    <section class="applications" id="aplicaciones">
-        <div class="container">
-            <h2 class="section-title">Aplicaciones Profesionales</h2>
-            
-            <div class="applications-grid">
-                <div class="application-card">
-                    <h3>🪵 Carpinterías y Marqueterías</h3>
-                    <ul>
-                        <li>Grabado personalizado en madera</li>
-                        <li>Corte de patrones complejos</li>
-                        <li>Señalización personalizada</li>
-                        <li>Acabados decorativos</li>
-                    </ul>
-                </div>
 
-                <div class="application-card">
-                    <h3>🎨 Estudios de Arte y Diseño</h3>
-                    <ul>
-                        <li>Proyectos artísticos únicos</li>
-                        <li>Prototipos y maquetas</li>
-                        <li>Grabado en múltiples materiales</li>
-                        <li>Piezas decorativas personalizadas</li>
-                    </ul>
-                </div>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
 
-                <div class="application-card">
-                    <h3>🏪 Tiendas de Souvenirs y Regalos</h3>
-                    <ul>
-                        <li>Llaveros personalizados</li>
-                        <li>Placas conmemorativas</li>
-                        <li>Grabado en acrílico y madera</li>
-                        <li>Productos únicos y personalizados</li>
-                    </ul>
-                </div>
+</body>
 
-                <div class="application-card">
-                    <h3>📱 Accesorios y Tecnología</h3>
-                    <ul>
-                        <li>Fundas personalizadas</li>
-                        <li>Grabado en metal y acrílico</li>
-                        <li>Componentes electrónicos</li>
-                        <li>Soportes y bases</li>
-                    </ul>
-                </div>
-
-                <div class="application-card">
-                    <h3>🏢 Fabricación de Avisos</h3>
-                    <ul>
-                        <li>Señalización comercial</li>
-                        <li>Letreros en acrílico</li>
-                        <li>Placas identificativas</li>
-                        <li>Rotulación profesional</li>
-                    </ul>
-                </div>
-
-                <div class="application-card">
-                    <h3>🎯 Juguetes y Didácticos</h3>
-                    <ul>
-                        <li>Rompecabezas personalizados</li>
-                        <li>Juegos educativos</li>
-                        <li>Piezas de madera y acrílico</li>
-                        <li>Juguetes únicos y seguros</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery -->
-    <section class="gallery" id="galeria">
-        <div class="container">
-            <h2 class="section-title">Galería de Proyectos</h2>
-            
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div>
-                        <strong>Video de la Máquina en Funcionamiento</strong><br>
-                        Sugerencia: Video corto mostrando Red Magic cortando o grabando. 
-                        Enfocar en la precisión del láser y la calidad del acabado.
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div>
-                        <strong>Trabajos en Madera</strong><br>
-                        Fotos de proyectos realizados: grabados detallados, 
-                        cortes precisos, acabados profesionales.
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div>
-                        <strong>Proyectos en Acrílico</strong><br>
-                        Piezas cortadas y grabadas en acrílico: 
-                        llaveros, placas, elementos decorativos.
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div>
-                        <strong>Trabajos en Metal</strong><br>
-                        Grabados en aluminio anodizado y acero inoxidable. 
-                        Mostrar la precisión en materiales duros.
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div>
-                        <strong>Proceso de Trabajo</strong><br>
-                        Fotos del proceso: configuración del material, 
-                        posicionamiento, resultado final.
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div>
-                        <strong>Detalles de Precisión</strong><br>
-                        Fotos macro mostrando la calidad del corte 
-                        y grabado en diferentes materiales.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Specifications -->
-    <section class="specs" id="especificaciones">
-        <div class="container">
-            <h2 class="section-title">Especificaciones Técnicas</h2>
-            
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <h3>Dimensiones y Peso</h3>
-                    <ul class="spec-list">
-                        <li><span class="spec-label">Altura:</span> <span class="spec-value">44 cm</span></li>
-                        <li><span class="spec-label">Ancho:</span> <span class="spec-value">69 cm</span></li>
-                        <li><span class="spec-label">Largo:</span> <span class="spec-value">75 cm</span></li>
-                        <li><span class="spec-label">Peso:</span> <span class="spec-value">25 kg</span></li>
-                        <li><span class="spec-label">Área de trabajo:</span> <span class="spec-value">400 x 400 mm</span></li>
-                    </ul>
-                </div>
-
-                <div class="spec-card">
-                    <h3>Sistema Láser</h3>
-                    <ul class="spec-list">
-                        <li><span class="spec-label">Potencia:</span> <span class="spec-value">80W</span></li>
-                        <li><span class="spec-label">Salida óptica:</span> <span class="spec-value">10W</span></li>
-                        <li><span class="spec-label">Tecnología:</span> <span class="spec-value">Compresión FAC</span></li>
-                        <li><span class="spec-label">Protección:</span> <span class="spec-value">Cúpula acrílico rojo 5mm</span></li>
-                    </ul>
-                </div>
-
-                <div class="spec-card">
-                    <h3>Materiales Estructurales</h3>
-                    <ul class="spec-list">
-                        <li><span class="spec-label">Estructura:</span> <span class="spec-value">Acero 1045</span></li>
-                        <li><span class="spec-label">Perfiles:</span> <span class="spec-value">Aluminio extruido</span></li>
-                        <li><span class="spec-label">Lámina:</span> <span class="spec-value">Acero calibre 18</span></li>
-                        <li><span class="spec-label">Protección:</span> <span class="spec-value">Acrílico translúcido rojo</span></li>
-                    </ul>
-                </div>
-
-                <div class="spec-card">
-                    <h3>Sistema de Control</h3>
-                    <ul class="spec-list">
-                        <li><span class="spec-label">Firmware:</span> <span class="spec-value">GRBL compatible</span></li>
-                        <li><span class="spec-label">Software:</span> <span class="spec-value">LightBurn compatible</span></li>
-                        <li><span class="spec-label">Conexión:</span> <span class="spec-value">USB directo</span></li>
-                        <li><span class="spec-label">Motores:</span> <span class="spec-value">Paso a paso</span></li>
-                    </ul>
-                </div>
-
-                <div class="spec-card">
-                    <h3>Sistemas de Seguridad</h3>
-                    <ul class="spec-list">
-                        <li><span class="spec-label">Protección ocular:</span> <span class="spec-value">Cúpula acrílico rojo</span></li>
-                        <li><span class="spec-label">Paro de emergencia:</span> <span class="spec-value">Incluido</span></li>
-                        <li><span class="spec-label">Protección sobrecarga:</span> <span class="spec-value">Automática</span></li>
-                        <li><span class="spec-label">Ventilación:</span> <span class="spec-value">Asistida integrada</span></li>
-                    
+</html>
